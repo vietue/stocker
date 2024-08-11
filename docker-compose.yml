@@ -1,0 +1,24 @@
+version: "3.3"
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - VPN_SERVICE_PROVIDER=protonvpn
+      - VPN_TYPE=openvpn
+      - OPENVPN_USER=6by01fHLF4uJSfoW
+      - OPENVPN_PASSWORD=hG9WY6qyiUmTEInWt6vUmpIiq3PAXhc7
+      - SERVER_COUNTRIES=Netherlands
+    ports:
+      - "80:80"
+      - "8080:8080"
+    restart: on-failure
+  app:
+    build: .
+    network_mode: "service:gluetun" #If using VPN, Remove the Hash from first and fill up Above Details.
+    command: bash start.sh
+    restart: on-failure
+    ports:
+      - "80:80"
+      - "8080:8080"

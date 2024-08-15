@@ -1,6 +1,8 @@
 version: "3.3"
 services:
   gluetun:
+    labels:
+      shipyard.route: "/"
     image: qmcgaw/gluetun
     cap_add:
       - NET_ADMIN

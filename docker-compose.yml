@@ -15,8 +15,8 @@ services:
       - "8080:8080"
   app:
     build: .
-      labels:
-        - shipyard.primary-route: true 
+    labels:
+      - shipyard.primary-route: true 
     network_mode: "service:gluetun" #If using VPN, Remove the Hash from first and fill up Above Details.
     command: bash start.sh
     restart: on-failure

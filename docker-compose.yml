@@ -3,7 +3,7 @@ services:
   gluetun:
     image: qmcgaw/gluetun
   labels:
-      shipyard.route: '/' 
+    shipyard.route: '/' 
     cap_add:
       - NET_ADMIN
     environment:

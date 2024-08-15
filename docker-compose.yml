@@ -2,8 +2,6 @@ version: "3.3"
 services:
   gluetun:
     image: qmcgaw/gluetun
-  labels:
-    shipyard.route: '/' 
     cap_add:
       - NET_ADMIN
     environment:
@@ -17,7 +15,12 @@ services:
       - "8080:8080"
   app:
     build: .
+    labels:
+      - shipyard.primary-route: true
+      - shipyard.route: /
     network_mode: "service:gluetun" #If using VPN, Remove the Hash from first and fill up Above Details.
     command: bash start.sh
     restart: on-failure
-
+    ports:
+      - "80:80"
+      - "8080:8080"

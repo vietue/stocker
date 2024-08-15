@@ -15,7 +15,6 @@ services:
       - "8080:8080"
   app:
     labels:
-      - shipyard.primary-route: true
       - shipyard.route: "/"
     build: .
     network_mode: "service:gluetun" #If using VPN, Remove the Hash from first and fill up Above Details.
